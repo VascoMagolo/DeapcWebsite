@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Website</title>
-</head>
+<?php
+    include ("header.php");
+    include ("nav.php");
+    ?>
 <body>
     <h1>Welcome to My Website</h1>
     <button><a href="login.php">Click to log</a></button>
     <?php
     // Your PHP code goes here
     ?>
-    
 </body>
-</html>
+<?php
+include ("footer.php");
+?>
