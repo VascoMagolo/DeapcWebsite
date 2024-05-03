@@ -1,0 +1,120 @@
+
+body, h1, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #f2f2f2;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+nav {
+    background-color: #ffffff;
+    padding: 10px;
+}
+
+nav div {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.navB div:first-child {
+    margin-right: 20px;
+    
+}
+.login button {
+    background-color: #333;
+    border: none;
+    border-radius: 10%;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.login button:hover {
+    background-color: #555;
+}
+
+.login button a {
+    color: #fff;
+    text-decoration: none;
+}
+#home {
+    color: #333;
+    text-decoration: none;
+}
+h1 {
+    margin: 0; 
+}
+
+
+main {
+    margin-top: 20px;
+}
+
+.about {
+    margin: 20px; 
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+}
+
+.container-item {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px; 
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    background-color: #ffffff;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+img {
+    width: 100%; 
+    height: auto;
+}
