@@ -11,6 +11,8 @@
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required>
         <button type="submit">Log</button>
+        <p>Don't have an account?</p>
+        <a href="register.php">Register</a>
     </form>
     <?php
     // Your PHP code goes here
