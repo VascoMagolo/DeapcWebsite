@@ -6,12 +6,12 @@
             </div>
             <div class="navB">
                 <?php
-                    if ($_SESSION["type_id"] == 1) {
+                    if ((isset($_SESSION["username"]) && ($_SESSION["type_id"] == 1))){
                         echo "<div><a id='home' href='profile.php'>Profile</a></div>";
                     }   
                 ?>
                 <div>
-                    <a id="home" href="index.php">Graph</a>
+                    <a id="home" href="graph.php">Graph</a>
                 </div>
                 <div>
                     <a id="home" href="index.php">Home</a>
