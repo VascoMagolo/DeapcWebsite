@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(254) NOT NULL UNIQUE,
     username VARCHAR(30) NOT NULL UNIQUE,
     pass VARCHAR(255) NOT NULL,  -- for storing hashed passwords
-    type_id INT UNSIGNED
+    type_id INT UNSIGNED,
+    imglink VARCHAR(200) DEFAULT 'Website/images/defaultuser.png'
 );
 
 -- Create 'types' table
