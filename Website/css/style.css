@@ -12,7 +12,14 @@ body {
     background-color: #f2f2f2;
 }
 
+a {
+    text-decoration: none;
+    color: #333;
+}
 
+a:hover {
+    color: #666;
+}
 .container {
     max-width: 1200px;
     margin: 20px auto; 
@@ -44,22 +51,6 @@ nav div {
 .navB div:first-child {
     margin-right: 20px;
     
-}
-.login button {
-    background-color: #333;
-    border: none;
-    border-radius: 10%;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.login button:hover {
-    background-color: #555;
-}
-
-.login button a {
-    color: #fff;
-    text-decoration: none;
 }
 #home {
     color: #333;
@@ -116,7 +107,47 @@ footer p {
     margin-bottom: 10px;
 }
 
-img {
+.indeximg {
     width: 100%; 
     height: auto;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropbtn {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    border-radius: 12px; /* Rounded edges */
+    font-size: 14px;
+    padding: 5px 13px; /* Larger clickable area */
+    transition: all 0.3s ease 0s; /* Smooth transition */
+    margin-left: 5px;
+}
+
+.dropbtn:hover {
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7); /* Even darker shadow on hover */
+}
+
+#imguser {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
 }

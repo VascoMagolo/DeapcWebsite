@@ -10,7 +10,7 @@
     ?>
 <body>
     <div>
-        <img src="../img/main.png" alt="main">
+        <img src="../img/main.png" alt="main" class="indeximg">
     </div>
     <!--About Section-->
     <div class="about">
@@ -44,7 +44,6 @@
             <p>bbbbbbbbbbbbbbb</p>
         </div>
     </div>
-
 </body>
 <?php
 include ("footer.php");
