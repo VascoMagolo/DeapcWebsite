@@ -151,3 +151,24 @@ footer p {
     height: 25px;
     border-radius: 50%;
 }
+.registerbutton {
+    margin-top: 3px;
+    margin-bottom: 1px;
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+}
+.textboxes {
+    background-color: white;
+    border: 1px solid black;
+}
+.registertext{
+    color: black;
+}
+.f{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+}
