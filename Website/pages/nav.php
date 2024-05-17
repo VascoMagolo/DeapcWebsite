@@ -5,10 +5,14 @@
                 <h1>IoT Platform</h1>
             </div>
             <div class="navB">
-                <div>
-                    <a id="home" href="graph.php">Graph</a>
-                </div>
-                
+                <?php
+                if (isset($_SESSION["username"])) {
+                        echo "<div>
+                        <a id='home' href='graph.php'>Graph</a>
+                    </div>";
+                }
+                ?>
+            
                 <div>   
                 <?php
                     if (isset($_SESSION["username"]) && $_SESSION['type_id'] == 1) {
@@ -25,7 +29,7 @@
                         echo "<div class='dropdown'>
                                 <button class='dropbtn'><img id='imguser' src='",$_SESSION["imglink"],"'>",$_SESSION["username"],"</button>
                                 <div class='dropdown-content'>
-                                    <a href='#'>Manage account</a>
+                                    <a href='../pages/manageac.php'>Manage account</a>
                                     <a href='#'>Definitions</a>
                                     <hr>
                                     <a href='../scripts/logout.php'>Logout</a>
