@@ -8,6 +8,14 @@
                 <div>
                     <a id="home" href="graph.php">Graph</a>
                 </div>
+                
+                <div>   
+                <?php
+                    if (isset($_SESSION["username"]) && $_SESSION['type_id'] == 1) {
+                        echo "<a id='home' href='users.php' style='color: red; margin-right: 10px;'>Users</a>";
+                    } else 
+                    ?>
+                </div>
                 <div>
                     <a id="home" href="index.php">Home</a>
                 </div>
