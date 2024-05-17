@@ -2,6 +2,7 @@
 session_start();
 include ("../pages/header.php");
 include ("../pages/nav.php");
+include ("../scripts/getdata.php");
 try {
     include ("../scripts/liga_db.php");
 } catch (\Throwable $th) {
