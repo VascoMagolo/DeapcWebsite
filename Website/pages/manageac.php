@@ -1,5 +1,4 @@
 <?php
-// Purpose: This page is used to manage the account of the user. The user can change their password, email, or delete their account.
 session_start();
 include ("header.php");
 include ("nav.php");
@@ -34,25 +33,6 @@ if (isset($_SESSION['error'])) {
         </form>
     </div>
 </div>
-
-<script>
-function validateFormpass() {
-    var oldpass = document.getElementById('oldpass').value;
-    var newpass = document.getElementById('newpass').value;
-    var confirmpass = document.getElementById('confirmpass').value;
-
-    if (newpass !== confirmpass) {
-        alert("Passwords do not match.");
-        return false;
-    }
-    if (newpass === oldpass) {
-        alert("New password cannot be the same as the old password.");
-        return false;
-    }
-    return true;
-}
-</script>
-
             <div class="manageac-item">
                 <h3>Change Email</h3>
                 <form action="../scripts/changeuser.php" method="POST">

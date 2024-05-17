@@ -13,3 +13,7 @@ Our main objective is to manage and monitor air quality, water quality, and weat
 - **Actuator management**: Administrators can manage actuators, such as air and water purifiers.
 - **Environmental alerts**: Regular users receive alerts about environmental conditions, such as air and water quality.
 - **Account management**: Administrators can manage user accounts, including creating, editing, and removing accounts.
+
+
+# How to Run the website on your machine
+
