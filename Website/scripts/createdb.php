@@ -64,4 +64,6 @@ foreach ($lines as $line) {
 echo "All queries were executed successfully";
 
 $conn->close();
+
+
 ?>
