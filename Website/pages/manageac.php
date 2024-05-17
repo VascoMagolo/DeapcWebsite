@@ -8,23 +8,51 @@ try {
 } catch (\Throwable $th) {
     echo "Error: " . $th->getMessage();
 }
+if (isset($_SESSION['error'])) {
+    ?>
+    <script>
+        alert("<?php echo $_SESSION['error']; ?>");
+    </script>
+    <?php
+    unset($_SESSION['error']);
+}
 ?>
 <body>
     <div class="manageac">
         <h2>Manage Account</h2>
         <div class="manageac-container">
-            <div class="manageac-item">
-                <h3>Change Password</h3>
-                <form action="../scripts/changeuser.php" method="POST">
-                    <label for="oldpass">Old Password:</label>
-                    <input type="password" id="oldpass" name="oldpass" required>
-                    <label for="newpass">New Password:</label>
-                    <input type="password" id="newpass" name="newpass" required>
-                    <label for="confirmpass">Confirm Password:</label>
-                    <input type="password" id="confirmpass" name="confirmpass" required>
-                    <input type="submit" value="Change Password">
-                </form>
-            </div>
+    <div class="manageac-item">
+        <h3>Change Password</h3>
+        <form action="../scripts/changeuser.php" method="POST" onsubmit="return validateFormpass()">
+            <label for="oldpass">Old Password:</label>
+            <input type="password" id="oldpass" name="oldpass" required>
+            <label for="newpass">New Password:</label>
+            <input type="password" id="newpass" name="newpass" required>
+            <label for="confirmpass">Confirm Password:</label>
+            <input type="password" id="confirmpass" name="confirmpass" required>
+            <input type="submit" value="Change Password">
+        </form>
+    </div>
+</div>
+
+<script>
+function validateFormpass() {
+    var oldpass = document.getElementById('oldpass').value;
+    var newpass = document.getElementById('newpass').value;
+    var confirmpass = document.getElementById('confirmpass').value;
+
+    if (newpass !== confirmpass) {
+        alert("Passwords do not match.");
+        return false;
+    }
+    if (newpass === oldpass) {
+        alert("New password cannot be the same as the old password.");
+        return false;
+    }
+    return true;
+}
+</script>
+
             <div class="manageac-item">
                 <h3>Change Email</h3>
                 <form action="../scripts/changeuser.php" method="POST">
