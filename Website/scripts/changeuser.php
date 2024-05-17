@@ -24,10 +24,21 @@
     }
     if (isset($_POST['newpass'])) {
         $newpass = $_POST['newpass'];
+        $oldpass = $_POST['oldpass'];
+        $confirmpass = $_POST['confirmpass'];
         $username = $_SESSION['username'];
-        $sql = "UPDATE users SET password = '$newpass' WHERE username = '$username'";
+        $sql = "UPDATE users SET pass = '$newpass' WHERE username = '$username' AND pass = '$oldpass'";
         $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        if ($stmt->execute()) {
+            $affected_rows = $conn->affected_rows;
+            if ($affected_rows > 0) {
+                $_SESSION['error'] = "Password changed successfully.";
+            } else {
+                $_SESSION['error'] = "Old password is incorrect.";
+            }
+        } else {
+            $_SESSION['error'] = $conn->error;
+        }
         header("Location: ../pages/manageac.php");
     }
     if (isset($_FILES['newprofilepic'])) {
