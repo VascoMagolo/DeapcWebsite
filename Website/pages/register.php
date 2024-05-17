@@ -4,25 +4,42 @@ include("nav.php");
 ?>
 <body>
     <h2>Register</h2>
+    <div class= "f">
     <form action="../scripts/register.php" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <label for="firstname">First Name:</label>
-        <input type="text" name="firstname" id="firstname" required>
-        <label for="lastname">Last Name:</label>
-        <input type="text" name="lastname" id="lastname" required>
-        <label for="age">Age:</label>
-        <input type="number" name="age" id="age" required>
-        <label for="address">Address:</label>
-        <input type="text" name="address" id="address" required>
-        <button type="submit">Register</button>
-        <p>Already have an account?</p>
-        <a href="login.php">Login</a>
+        <label class= "registertext" for="username">Username:</label>
+        <p></p>
+        <input class="textboxes" type="text" name="username" id="username" required>
+        <p></p>
+        <label class= "registertext" for="password">Password:</label>
+        <p></p>
+        <input class="textboxes" type="password" name="password" id="password" required>
+        <p></p>
+        <label class= "registertext" for="email">Email:</label>
+        <p></p>
+        <input class="textboxes" type="email" name="email" id="email" required>
+        <p></p>
+        <label class= "registertext" for="firstname">First Name:</label>
+        <p></p>
+        <input class="textboxes" type="text" name="firstname" id="firstname" required>
+        <p></p>
+        <label class= "registertext" for="lastname">Last Name:</label>
+        <p></p>
+        <input class="textboxes" type="text" name="lastname" id="lastname" required>
+        <p></p>
+        <label class= "registertext" for="age">Age:</label>
+        <p></p>
+        <input class="textboxes" type="number" name="age" id="age" required>
+        <p></p>
+        <label class= "registertext" for="address">Address:</label>
+        <p></p>
+        <input class="textboxes" type="text" name="address" id="address" required>
+        <p></p>
+        <button class="registerbutton" type="submit">Register</button>
+        <p> 
+            <label class= "registertext">  Already have an account? </label></p>
+        <a class= "registertext"  href="login.php">Login</a>
     </form>
+</div>
 </body>
 <?php
 include("footer.php");
