@@ -12,9 +12,7 @@ try {
 ?>
 <body>
 <?php
-$query = 'SELECT *
-FROM users
-';
+$query = 'SELECT * FROM users';
 
 $res = my_query($query);
 
@@ -45,11 +43,8 @@ foreach($res as $v)
   <td><a href="../scripts/delete_user.php?id=' . htmlspecialchars($v['id']) . '">X</a></td>
   </tr>';
 }
-echo '<table>'
+echo '</table>';
 ?>
-
-
-
 </body>
 <?php
 include ("../pages/footer.php");

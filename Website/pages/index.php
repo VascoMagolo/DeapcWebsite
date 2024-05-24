@@ -8,10 +8,36 @@
         echo "Error: " . $th->getMessage();
     }
     ?>
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/style_slideshow.css">
+</head>
 <body>
-    <div>
-        <img src="../img/main.png" alt="main" class="indeximg">
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="../img/main_pictures/main.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="../img/main_pictures/main2.png" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="../img/main_pictures/main.png" style="width:100%">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+    </script>
+
     <!--About Section-->
     <div class="about">
         <div class="container">

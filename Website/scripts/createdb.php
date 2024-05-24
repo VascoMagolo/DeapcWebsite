@@ -12,18 +12,18 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Create database
+// Create database if it doesn't exist
 $sql = "CREATE DATABASE IF NOT EXISTS $database";
 if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully";
+    echo "Database created successfully\n";
 } else {
-    echo "Error creating database: " . $conn->error;
+    echo "Error creating database: " . $conn->error . "\n";
 }
 
-// Close connection
+// Close the initial connection
 $conn->close();
 
-// Create connection
+// Create a new connection to the newly created database
 $conn = new mysqli($servername, $username, $password, $database);
 
 // Check connection
@@ -42,9 +42,10 @@ $lines = file($sqlFilePath);
 
 // Loop through each line
 foreach ($lines as $line) {
-    // Skip it if it's a comment
-    if (substr($line, 0, 2) == '--' || $line == '')
+    // Skip it if it's a comment or an SQL directive
+    if (substr($line, 0, 2) == '--' || substr($line, 0, 2) == '/*!' || $line == '') {
         continue;
+    }
 
     // Add this line to the current segment
     $templine .= $line;
@@ -52,18 +53,16 @@ foreach ($lines as $line) {
     // If it has a semicolon at the end, it's the end of the query
     if (substr(trim($line), -1, 1) == ';') {
         // Perform the query
-        if(!$conn->query($templine)){
+        if (!$conn->query($templine)) {
             print('Error performing query \'<strong>' . $templine . '\': ' . $conn->error . '<br /><br />');
         }
-
         // Reset temp variable to empty
         $templine = '';
     }
 }
 
-echo "All queries were executed successfully";
+echo "All queries were executed successfully\n";
 
+// Close connection
 $conn->close();
-
-
 ?>

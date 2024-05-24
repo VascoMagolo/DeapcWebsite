@@ -12,7 +12,7 @@ include("nav.php");
         <p></p>
         <label class= "registertext" for="password">Password:</label>
         <p></p>
-        <input class="textboxes" type="password" name="password" id="password" required>
+        <input class="textboxes" type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
         <p></p>
         <label class= "registertext" for="email">Email:</label>
         <p></p>

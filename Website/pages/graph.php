@@ -10,17 +10,15 @@ try {
     exit();
 }
 
+$query = "SELECT data.value, data.device_id, device.name FROM data JOIN device ON data.device_id = device.id WHERE device.type_id = 2";
 
-
-// Executa a consulta e obtém os dados
-$query = "SELECT value FROM data WHERE device_id = 2";
 $result = my_query($query);
 
-// Processa os dados para o gráfico
 $data = array();
 if (!empty($result)) {
     foreach ($result as $row) {
-        $data[] = $row["value"];
+        $data[$row["device_id"]]['name'] = $row["name"];
+        $data[$row["device_id"]]['values'][] = $row["value"];
     }
 }
 ?>
@@ -32,14 +30,23 @@ var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: <?php echo json_encode(range(1, count($data))); ?>, // Cria labels numéricas
-        datasets: [{
-            label: 'My Dataset',
-            data: <?php echo json_encode(array_values($data)); ?>,
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1
-        }]
+        labels: <?php echo json_encode(range(1, max(array_map(function($deviceData) { return count($deviceData['values']); }, $data)))); ?>,
+        datasets: <?php echo json_encode(array_map(function($deviceData, $deviceId) {
+            return [
+                'label' => $deviceData['name'],
+                'data' => $deviceData['values'],
+                'fill' => false,
+                'borderColor' => 'rgb(' . rand(0, 255) . ', ' . rand(0, 255) . ', ' . rand(0, 255) . ')',
+                'tension' => 0.1
+            ];
+        }, $data, array_keys($data))); ?>
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: false
+            }
+        }
     }
 });
 </script>
