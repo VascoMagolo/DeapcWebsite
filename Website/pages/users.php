@@ -12,9 +12,7 @@ try {
 ?>
 <body>
 <?php
-$query = 'SELECT *
-FROM users
-';
+$query = 'SELECT * FROM users';
 
 $res = my_query($query);
 
@@ -41,11 +39,8 @@ foreach($res as $v)
     <td>' . htmlspecialchars($v['type_id']) . '</td>
   </tr>';;
 }
-
+echo '</table>';
 ?>
-
-
-
 </body>
 <?php
 include ("../pages/footer.php");
