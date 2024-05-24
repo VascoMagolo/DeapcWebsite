@@ -2,8 +2,6 @@
     session_start();
     include ("../pages/nav.php");
     include ("../pages/header.php");
-
-    
 ?>
 <body>
     <h2>Log</h2>
