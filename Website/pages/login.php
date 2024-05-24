@@ -5,7 +5,6 @@
 
     
     ?>
-?>
 <body>
     <h2>Log</h2>
     <form action="../scripts/login.php" method="post">
