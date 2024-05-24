@@ -1,57 +1,128 @@
--- Create 'users' table
-CREATE TABLE IF NOT EXISTS users (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstname VARCHAR(30),
-    lastname VARCHAR(30),
-    age TINYINT UNSIGNED,
-    address VARCHAR(50),
-    email VARCHAR(254) NOT NULL UNIQUE,
-    username VARCHAR(30) NOT NULL UNIQUE,
-    pass VARCHAR(255) NOT NULL,  -- for storing hashed passwords
-    type_id INT UNSIGNED,
-    imglink VARCHAR(200) DEFAULT 'Website/images/defaultuser.png'
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+01:00";
 
--- Create 'types' table
-CREATE TABLE IF NOT EXISTS types_users (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    description VARCHAR(50) NOT NULL
-);
+CREATE TABLE `data` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `device_id` int(6) UNSIGNED DEFAULT NULL,
+  `value` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Create 'device' table
-CREATE TABLE IF NOT EXISTS device(
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    type_id INT(6) UNSIGNED,
-    name VARCHAR(50) NOT NULL,
-    description VARCHAR(200) NOT NULL,
-    imglink VARCHAR(200) NOT NULL
-);
 
--- Create 'type_device' table
-CREATE TABLE IF NOT EXISTS type_device(
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    description VARCHAR(50) NOT NULL
-);
+INSERT INTO `data` (`id`, `device_id`, `value`, `description`, `date`) VALUES
+(1, 1, 'ON', 'Lamp is ON', '2024-05-07 12:57:53'),
+(2, 2, '25', 'Temperature is 25ºC', '2024-05-07 12:57:53'),
+(3, 2, '27', 'Temperature is 27ºC', '2024-05-07 18:57:20'),
+(4, 3, '70', 'there is 70% humidity in the room', '2024-05-24 08:05:19'),
+(5, 3, '63', 'The Humidity in the room is at 63%', '2024-05-24 08:35:19');
 
--- Create 'data' table
-CREATE TABLE IF NOT EXISTS data(
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    device_id INT(6) UNSIGNED,
-    value VARCHAR(50) NOT NULL,
-    description VARCHAR(200) NOT NULL,
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
--- Alter tables to add foreign keys
-ALTER TABLE users ADD FOREIGN KEY (type_id) REFERENCES types_users(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE device ADD FOREIGN KEY (type_id) REFERENCES type_device(id) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE data ADD FOREIGN KEY (device_id) REFERENCES device(id) ON DELETE CASCADE ON UPDATE CASCADE;
+CREATE TABLE `device` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `type_id` int(6) UNSIGNED DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `imglink` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Insert data into tables
-INSERT INTO types_users (name, description) VALUES ('Admin', 'Administrator'), ('Manager', 'Sensors and Actuators Manager'), ('User', 'Regular User');
-INSERT INTO users (firstname, lastname, age, address, email, username, pass, type_id) VALUES ('Admin', 'Admin', 19, 'admin', 'admin@isep.ipp.pt', 'admin', 'admin', 1);
-INSERT INTO type_device (name, description) VALUES ('Actuator', 'Actuator'), ('Sensor', 'Sensor');
-INSERT INTO device (type_id, name, description, imglink) VALUES (1, 'Lamp', 'Lamp', 'https://www.google.com'), (2, 'Temperature Sensor', 'Temperature Sensor', 'https://www.google.com');
-INSERT INTO data (device_id, value, description) VALUES (1, 'ON', 'Lamp is ON'), (2, '25', 'Temperature is 25ºC');
+
+INSERT INTO `device` (`id`, `type_id`, `name`, `description`, `imglink`) VALUES
+(1, 1, 'Lamp', 'Lamp', 'https://www.google.com'),
+(2, 2, 'Temperature Sensor', 'Temperature Sensor', 'https://www.google.com'),
+(3, 2, 'Humidity Sensor', 'Sensor that reads the humidity of the place that he is at', 'www.google.com');
+
+
+CREATE TABLE `types_users` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO `types_users` (`id`, `name`, `description`) VALUES
+(1, 'Admin', 'Administrator'),
+(2, 'Manager', 'Sensors and Actuators Manager'),
+(3, 'User', 'Regular User');
+
+
+CREATE TABLE `type_device` (
+  `id` int(6) UNSIGNED NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO `type_device` (`id`, `name`, `description`) VALUES
+(1, 'Actuator', 'Actuator'),
+(2, 'Sensor', 'Sensor');
+
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `firstname` varchar(30) DEFAULT NULL,
+  `lastname` varchar(30) DEFAULT NULL,
+  `age` tinyint(3) UNSIGNED DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `email` varchar(254) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `type_id` int(10) UNSIGNED DEFAULT NULL,
+  `imglink` varchar(200) DEFAULT '../img/defaultuser.png'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `age`, `address`, `email`, `username`, `pass`, `type_id`, `imglink`) VALUES
+(1, 'Admin', 'Admin', 19, 'admin', 'admin@gmail.com', 'admin', 'admin', 1, '../img/profilepics/image.png'),
+(2, 'Vasco', 'Magolo', 19, 'santa maria da feira', 'vascomagolo@gmail.com', 'vasco', '123', 3, '../img/defaultuser.png');
+
+
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `device_id` (`device_id`);
+
+
+ALTER TABLE `device`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`);
+
+
+ALTER TABLE `types_users`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `type_device`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `type_id` (`type_id`);
+
+ALTER TABLE `data`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+ALTER TABLE `device`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+ALTER TABLE `types_users`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+ALTER TABLE `type_device`
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+ALTER TABLE `data`
+  ADD CONSTRAINT `data_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `device` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `device`
+  ADD CONSTRAINT `device_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `type_device` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `types_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
