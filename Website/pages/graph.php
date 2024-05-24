@@ -3,8 +3,8 @@ session_start();
 include ("../pages/header.php");
 include ("../pages/nav.php");
 try {
-    include ("../scripts/getdata.php");
     include ("../scripts/liga_db.php");
+    include ("../scripts/getdata.php");
 } catch (\Throwable $th) {
     echo "Error: " . $th->getMessage();
     exit();

@@ -1,4 +1,5 @@
 <?php
+// Inclua a conexão com o banco de dados
 try {
     include ("../scripts/liga_db.php");
 } catch (\Throwable $th) {
@@ -6,38 +7,12 @@ try {
     exit();
 }
 
-
+// Define a função my_query
 function my_query($sql, $debug=0) {
-    global $arrConfig;
+    global $conn;  // Certifique-se de que $conn é global
     if($debug) echo $sql;
-    $result = $arrConfig['conn']->query($sql);
-    
-    /* SELECT
-    mysqli_result Object
-    (
-        [current_field] => 0
-        [field_count] => 5
-        [lengths] => 
-        [num_rows] => 3
-        [type] => 0
-    )
-    */
+    $result = $conn->query($sql);
 
-    /* UPDATE
-    1: correu tudo bem
-    0: erro na QUERY
-    */
-
-    /* DELETE
-    1: correu tudo bem
-    0: erro na QUERY
-    */
-
-    /* INSERT
-    id: correu tudo bem
-    0: erro na QUERY
-    */
-    
     if(isset($result->num_rows)) { // SELECT
         $arrRes = array();
         if ($result->num_rows > 0) {
@@ -48,7 +23,7 @@ function my_query($sql, $debug=0) {
         return $arrRes;
     }
     else if ($result === TRUE) { // INSERT, DELETE, UPDATE
-        if($last_id = $arrConfig['conn']->insert_id) {
+        if($last_id = $conn->insert_id) {
             return $last_id;
         }
         return 1;
