@@ -3,11 +3,7 @@ include("header.php");
 include("nav.php");
 ?>
 <body>
-<<<<<<< Updated upstream
-    <div class="g">
-=======
     <div class= "g">
->>>>>>> Stashed changes
     <h2>Register</h2>
     <div class= "f">
     <form action="../scripts/register.php" method="post">
