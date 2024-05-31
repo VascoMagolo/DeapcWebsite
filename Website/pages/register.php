@@ -3,7 +3,6 @@ include("header.php");
 include("nav.php");
 ?>
 <body>
-
     <div class="rbackground">
     <h2>Register</h2>
     <div class= "rbacktext">
