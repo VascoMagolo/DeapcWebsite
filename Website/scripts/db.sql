@@ -18,6 +18,8 @@ INSERT INTO `data` (`id`, `device_id`, `value`, `description`, `date`) VALUES
 (4, 3, '70', 'there is 70% humidity in the room', '2024-05-24 08:05:19'),
 (5, 3, '63', 'The Humidity in the room is at 63%', '2024-05-24 08:35:19');
 
+INSERT INTO `data` (`device_id`, `value`, `description`) VALUES
+(1, '0', 'Lamp is OFF')
 
 CREATE TABLE `device` (
   `id` int(6) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
