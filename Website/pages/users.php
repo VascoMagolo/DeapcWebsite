@@ -40,7 +40,7 @@ foreach($res as $v)
   <td>' . htmlspecialchars($v['username']) . '</td>
   <td>' . htmlspecialchars($v['type_id']) . '</td>
   <td><a href="edit_user.php?id=' . htmlspecialchars($v['id']) . '">Edit</a></td>
-  <td><a href="../scripts/delete_user.php?id=' . htmlspecialchars($v['id']) . '">X</a></td>
+  <td><a href="../scripts/delete_register.php?id=' . htmlspecialchars($v['id']) . '&t=users">X</a></td>
   </tr>';
 }
 echo '</table>';

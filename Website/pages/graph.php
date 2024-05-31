@@ -50,6 +50,12 @@ var chart = new Chart(ctx, {
     }
 });
 </script>
+
+<?php
+if (isset($_SESSION["username"]) && ($_SESSION['type_id'] == 1) || ($_SESSION['type_id'] == 2)) {
+} else
+?>
+
 </body>
 <?php
 include ("../pages/footer.php");
