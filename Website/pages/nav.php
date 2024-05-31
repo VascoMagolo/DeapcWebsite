@@ -2,13 +2,13 @@
     <nav>
         <div>
             <div>
-                <h1>IoT Platform</h1>
+                <h1><a href='../pages/index.php'>IoT Platform</a></h1>
             </div>
             <div class="navB">
                 <?php
                 if (isset($_SESSION["username"])) {
                         echo "<div>
-                        <a id='home' href='graph.php'>Graph</a>
+                        <a id='home' href='graph.php'>Graphic</a>
                     </div>";
                 }
                 ?>

@@ -116,10 +116,6 @@ var chart = new Chart(ctx, {
     }
 });
 </script>
-
-
-
-
         </div>
     </div>
 
