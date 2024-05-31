@@ -30,3 +30,5 @@ function my_query($sql, $debug=0) {
     return 0;
 }
 ?>
+
+
