@@ -3,7 +3,7 @@ START TRANSACTION;
 SET time_zone = "+01:00";
 
 CREATE TABLE `data` (
-  `id` int(6) UNSIGNED NOT NULL,
+  `id` int(6) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `device_id` int(6) UNSIGNED DEFAULT NULL,
   `value` varchar(50) NOT NULL,
   `description` varchar(200) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `data` (
 
 
 INSERT INTO `data` (`id`, `device_id`, `value`, `description`, `date`) VALUES
-(1, 1, 'ON', 'Lamp is ON', '2024-05-07 12:57:53'),
+(1, 1, '1', 'Lamp is ON', '2024-05-07 12:57:53'),
 (2, 2, '25', 'Temperature is 25ºC', '2024-05-07 12:57:53'),
 (3, 2, '27', 'Temperature is 27ºC', '2024-05-07 18:57:20'),
 (4, 3, '70', 'there is 70% humidity in the room', '2024-05-24 08:05:19'),
@@ -20,7 +20,7 @@ INSERT INTO `data` (`id`, `device_id`, `value`, `description`, `date`) VALUES
 
 
 CREATE TABLE `device` (
-  `id` int(6) UNSIGNED NOT NULL,
+  `id` int(6) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `type_id` int(6) UNSIGNED DEFAULT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(200) NOT NULL,
@@ -35,7 +35,7 @@ INSERT INTO `device` (`id`, `type_id`, `name`, `description`, `imglink`) VALUES
 
 
 CREATE TABLE `types_users` (
-  `id` int(6) UNSIGNED NOT NULL,
+  `id` int(6) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -48,7 +48,7 @@ INSERT INTO `types_users` (`id`, `name`, `description`) VALUES
 
 
 CREATE TABLE `type_device` (
-  `id` int(6) UNSIGNED NOT NULL,
+  `id` int(6) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `description` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -60,7 +60,7 @@ INSERT INTO `type_device` (`id`, `name`, `description`) VALUES
 
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `firstname` varchar(30) DEFAULT NULL,
   `lastname` varchar(30) DEFAULT NULL,
   `age` tinyint(3) UNSIGNED DEFAULT NULL,
@@ -79,43 +79,16 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `age`, `address`, `email`, `
 
 
 ALTER TABLE `data`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `device_id` (`device_id`);
 
 
 ALTER TABLE `device`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `type_id` (`type_id`);
 
-
-ALTER TABLE `types_users`
-  ADD PRIMARY KEY (`id`);
-
-
-ALTER TABLE `type_device`
-  ADD PRIMARY KEY (`id`);
-
-
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `username` (`username`),
   ADD KEY `type_id` (`type_id`);
-
-ALTER TABLE `data`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
-ALTER TABLE `device`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
-ALTER TABLE `types_users`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
-ALTER TABLE `type_device`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 ALTER TABLE `data`
   ADD CONSTRAINT `data_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `device` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
