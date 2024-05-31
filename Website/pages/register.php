@@ -3,9 +3,9 @@ include("header.php");
 include("nav.php");
 ?>
 <body>
-    <div class= "g">
+    <div class="rbackground">
     <h2>Register</h2>
-    <div class= "f">
+    <div class= "rbacktext">
     <form action="../scripts/register.php" method="post">
         <label class= "registertext" for="username">Username:</label>
         <p></p>
