@@ -58,7 +58,7 @@ if (!$user) {
     <input type="number" id="type_id" name="type_id" min="0" value="<?php echo htmlspecialchars($user['type_id']); ?>" required><br><br>
 
     <label for="imglink">Link da Imagem:</label><br>
-    <input type="file" accept="image/png" id="imglink" name="imglink" maxlength="200" value="<?php echo htmlspecialchars($user['imglink']); ?>"><br><br>
+    <input type="file"  id="imglink" name="imglink" maxlength="200" value="<?php echo htmlspecialchars($user['imglink']); ?>"><br><br>
 
     <button type="submit">Edit</button>
 </form>
