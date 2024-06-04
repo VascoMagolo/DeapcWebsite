@@ -1,6 +1,7 @@
 <?php
 include("header.php");
 include("nav.php");
+include("../scripts/iflog.php");
 ?>
 <body>
     <div class="rbackground">

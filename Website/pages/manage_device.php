@@ -1,5 +1,5 @@
 <head>
-    
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <link rel="stylesheet" type="text/css" href="../css/devices.css">
 </head>
 <?php
@@ -20,6 +20,7 @@ $res = my_query($query);
 ?>
 <h1>Manage devices</h1>
 <body>
+<button id="addDeviceBtn">Add Device</button>
     <?php
 $res = my_query($query);
 
@@ -44,11 +45,6 @@ foreach($res as $v)
 }
 echo "</table>";
 ?>
-
-<!-- Botão para exibir o formulário -->
-<button id="addDeviceBtn">Add Device</button>
-
-<!-- Modal (popup) para adicionar um novo dispositivo -->
 <div id="addDeviceModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -68,7 +64,6 @@ echo "</table>";
     </div>
 </div>
 <script>
-// JavaScript para exibir e fechar o modal
 var modal = document.getElementById("addDeviceModal");
 var btn = document.getElementById("addDeviceBtn");
 var span = document.getElementsByClassName("close")[0];
