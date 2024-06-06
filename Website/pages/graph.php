@@ -32,7 +32,7 @@ if (!empty($result)) {
 <body>
     <?php
     if(isset($_SESSION['username']) && $_SESSION['type_id'] !== 3){
-        echo "<div><button><a href='manage_device.php'>Manage Devices</a></button></div>";
+        echo "<div><a href='manage_device.php'><button class='BtnDevice'>Manage Devices</button></a></div>";
     }
     ?>
     <div class="contact">

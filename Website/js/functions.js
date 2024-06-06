@@ -36,5 +36,4 @@ function showSlides(n) {
     dots[slideIndex-1].className += " active";
 }
 
-
 // Path: Website/js/functions.js

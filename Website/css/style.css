@@ -146,6 +146,16 @@ footer p {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.7); /* Even darker shadow on hover */
 }
 
+.BtnDevice {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}
+
 #imguser {
     width: 25px;
     height: 25px;
