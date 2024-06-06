@@ -1,8 +1,1 @@
-table{
-    width: 100%;
-    border-color: black;
-}
-
-table th{
-    background-color: wheat;
-}
+tr:nth-child(even){background-color: #c9bfbf !important;}
