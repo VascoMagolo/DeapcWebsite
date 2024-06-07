@@ -42,13 +42,13 @@
         header("Location: ../pages/manageac.php");
     }
     if (isset($_FILES['newprofilepic'])) {
-        $username = $_SESSION['username'];
+        $userId = $_SESSION['id'];
         $target_dir = "../img/profilepics/";
-        $target_file = $target_dir . basename($_FILES["newprofilepic"]["name"]);
+        $target_file = $target_dir . $userId . ".png";
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         if (move_uploaded_file($_FILES["newprofilepic"]["tmp_name"], $target_file)) {
-            $sql = "UPDATE users SET imglink = '$target_file' WHERE username = '$username'";
+            $sql = "UPDATE users SET imglink = '$target_file' WHERE id = $userId";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             header("Location: ../pages/manageac.php");
@@ -56,6 +56,7 @@
             echo "Sorry, there was an error uploading your file.";
         }
     }
+    
     if (isset($_POST['delete'])) {
         $username = $_SESSION['username'];
         $sql = "DELETE FROM users WHERE username = '$username'";

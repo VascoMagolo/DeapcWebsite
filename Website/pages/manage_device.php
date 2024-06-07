@@ -63,7 +63,10 @@
             <h2>Add New Device</h2>
             <form action="../scripts/add_device.php" method="post">
                 <label for="type_name">Device Type:</label><br>
-                <input type="text" id="type_name" name="type_name" required><br><br>
+                <select name="type_name" id="type_name">
+                    <option value="1">Actuator</option>
+                    <option value="2">Sensors</option>
+                </select>
 
                 <label for="device_name">Device Name:</label><br>
                 <input type="text" id="device_name" name="device_name" required><br><br>
