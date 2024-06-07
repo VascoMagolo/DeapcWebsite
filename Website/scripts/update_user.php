@@ -11,21 +11,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = htmlspecialchars($_POST['username']);
     $password = !empty($_POST['pass']) ? password_hash($_POST['pass'], PASSWORD_BCRYPT) : null;
     $type_id = intval($_POST['type_id']);
-    $imglink = htmlspecialchars($_POST['imglink']);
 
-
-    $sql = "UPDATE users SET firstname = ?, lastname = ?, age = ?, address = ?, email = ?, username = ?, type_id = ?, imglink = ? WHERE id = ?";
+    $sql = "UPDATE users SET firstname = ?, lastname = ?, age = ?, address = ?, email = ?, username = ?, type_id = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisssssi", $firstname, $lastname, $age, $address, $email, $username, $type_id, $imglink, $userId);
+    $stmt->bind_param("ssissssi", $firstname, $lastname, $age, $address, $email, $username, $type_id, $userId);
 
     if ($stmt->execute()) {
-        echo "Usuário atualizado com sucesso";
+        echo "Users updated successfully.";
     } else {
-        echo "Erro ao atualizar usuário: " . $conn->error;
+        echo "Error updating the users: " . $conn->error;
     }
 
     $stmt->close();
     $conn->close();
 }
-header('Location: ../pages/edit_user.php');
+header('Location: ../pages/users.php');
 ?>

@@ -37,13 +37,18 @@
 .modal-content h2 {
     text-align: center;
 }
-.modal-content form input[type=text], .modal-content form textarea{
+.modal-content form input[type=text], .modal-content form textarea, .modal-content form select{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
 }
-
+option, select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
 .close {
     color: #aaa;
     float: right;
