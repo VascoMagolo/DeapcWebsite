@@ -157,6 +157,9 @@ footer p {
     background-color: green;
     color: white;
     border: 1px solid black;
+    cursor: pointer;
+    margin-left:5px;
+    margin-top:3px;
 }
 .textboxes {
     margin-left: 5px;
@@ -172,6 +175,8 @@ footer p {
     position: relative;
     display: flex;
     justify-content: center;
+    width: auto;
+    height: auto;
     margin-top: 100px;
     padding-left: 75px;
     padding-right: 75px;
@@ -187,27 +192,64 @@ footer p {
     margin: auto;
     padding-bottom: 120px;
 }
+.htext{
+    color:black;
+    font-size: 30px
+}
 @media screen and (max-width: 800px){
-    div.rbacktext {
+    .rbacktext {
     padding-left: 30px;
     padding-right: 30px;
+    width:30%;
+    height:30%;
+    padding-bottom:30px;
+    }
+    .rbackground{
+        height: 65%;
+        width: 50%;
+    }
+    .textboxes{
+        height: 16px;
+        width: 100px;
+        padding: 0px;
+        margin-left:0px;
+    }
+    .registertext{
+        font-size: 12px;
+        margin-left:0px;
+    }
+    .htext{
+        font-size: 21px;
+    }
+    .registerbutton{
+        margin-left:0px;
     }
 }
 @media screen and (max-width: 1200px) and (min-width: 800px){
-    div.rbacktext{
+    .rbacktext{
     padding-left: 55px;
     padding-right: 55px;
+    width:35%;
+    height: 50%;
     }
-}
-@media screen and (max-height: 400px){
-    div.rbacktext{
-        padding-top: 5px;
-        padding-bottom: 5px;
+    .rbackground{
+        height:50%;
+        width: 30%;
     }
-}
-@media screen and (min-height: 400px) and (max-height: 550px){
-    div.rbacktext{
-        padding-top: 13px;
-        padding-bottom: 13px;
+    .textboxes{
+        height:21px;
+        width:115px;
+        padding:0px;
+        margin-left:0px;
+    }
+    .registertext{
+        font-size:14px;
+        margin-left:0px;
+    }
+    .htext{
+        font-size:25px;
+    }
+    .registerbutton{
+        margin-left:0px;
     }
 }

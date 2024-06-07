@@ -4,7 +4,7 @@ include("nav.php");
 ?>
 <body>
     <div class="rbackground">
-    <h2>Register</h2>
+    <h2 class=htext>Register</h2>
     <div class= "rbacktext">
     <form action="../scripts/register.php" method="post">
         <label class= "registertext" for="username">Username:</label>
