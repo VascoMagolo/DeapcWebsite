@@ -16,23 +16,26 @@ if (isset($_SESSION['error'])) {
     unset($_SESSION['error']);
 }
 ?>
+<head>
+    <link rel="stylesheet" href="../css/manageac.css">
+    <title>Manage Account</title>
+</head>
 <body>
     <div class="manageac">
         <h2>Manage Account</h2>
         <div class="manageac-container">
-    <div class="manageac-item">
-        <h3>Change Password</h3>
-        <form action="../scripts/changeuser.php" method="POST" onsubmit="return validateFormpass()">
-            <label for="oldpass">Old Password:</label>
-            <input type="password" id="oldpass" name="oldpass" required>
-            <label for="newpass">New Password:</label>
-            <input type="password" id="newpass" name="newpass" required>
-            <label for="confirmpass">Confirm Password:</label>
-            <input type="password" id="confirmpass" name="confirmpass" required>
-            <input type="submit" value="Change Password">
-        </form>
-    </div>
-</div>
+            <div class="manageac-item">
+                <h3>Change Password</h3>
+                <form action="../scripts/changeuser.php" method="POST" onsubmit="return validateFormpass()">
+                    <label for="oldpass">Old Password:</label>
+                    <input type="password" id="oldpass" name="oldpass" required>
+                    <label for="newpass">New Password:</label>
+                    <input type="password" id="newpass" name="newpass" required>
+                    <label for="confirmpass">Confirm Password:</label>
+                    <input type="password" id="confirmpass" name="confirmpass" required>
+                    <input type="submit" value="Change Password">
+                </form>
+            </div>
             <div class="manageac-item">
                 <h3>Change Email</h3>
                 <form action="../scripts/changeuser.php" method="POST">
@@ -59,9 +62,8 @@ if (isset($_SESSION['error'])) {
             </div>
             <div class="manageac-item">
                 <h3>Delete Account</h3>
-                <form action="../scripts/changeuser.php" method="POST">
-                    <label for="delete">Are you sure you want to delete your account?</label>
-                    <input type="submit" value="Delete Account">
+                <form action="../scripts/changeuser.php" method="POST" onsubmit="return confirmDelete();">
+                    <input type="submit" id="delete"value="Delete Account">
                 </form>
             </div>
         </div>
