@@ -35,8 +35,7 @@ function showSlides(n) {
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
 }
-
-
-
-
+function confirmDelete() {
+    return confirm("Are you sure you want to delete your account?");
+}
 // Path: Website/js/functions.js

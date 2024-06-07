@@ -2,6 +2,7 @@
     session_start();
     include ("../pages/nav.php");
     include ("../pages/header.php");
+    include ("../scripts/iflog.php");
     ?>
 <body>
     <div class="rbackground">
