@@ -29,6 +29,10 @@ if (!$user) {
     exit();
 }
 ?>
+<head>
+    <link rel="stylesheet" href="../css/edit_user.css">
+    <title>Edit User</title>
+</head>
 <body>
 
 <h1>Edit User</h1>
